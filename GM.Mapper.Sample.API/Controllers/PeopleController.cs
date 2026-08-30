@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace GM.Mapper.Sample.API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class PeopleController(IPeopleService people) : ControllerBase
+[Route("api/v1/[controller]")]
+public sealed class PeopleController(IPeopleService people) : ControllerBase
 {
     /// <summary>Returns all people as mapped DTOs (FullName + Age computed during mapping).</summary>
     [HttpGet]

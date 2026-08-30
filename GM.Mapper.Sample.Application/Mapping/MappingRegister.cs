@@ -7,7 +7,7 @@ namespace GM.Mapper.Sample.Application.Mapping;
 /// Custom Mapster mappings, discovered by <c>TypeAdapterConfig.Scan(...)</c>. Shows computing
 /// derived fields (<c>FullName</c>, <c>Age</c>) instead of just copying matching properties.
 /// </summary>
-public class MappingRegister : IRegister
+public sealed class MappingRegister : IRegister
 {
     public void Register(TypeAdapterConfig config)
     {

@@ -18,7 +18,7 @@ public class PeopleEndpointsTests(WebApplicationFactory<Program> factory)
     [Fact]
     public async Task Post_then_get_returns_the_created_person()
     {
-        var post = await _client.PostAsJsonAsync("/people", new
+        var post = await _client.PostAsJsonAsync("/api/v1/people", new
         {
             firstName = "Ada",
             lastName = "Lovelace",
@@ -30,8 +30,20 @@ public class PeopleEndpointsTests(WebApplicationFactory<Program> factory)
         var created = await post.Content.ReadFromJsonAsync<PersonDto>();
         Assert.Equal("Ada Lovelace", created!.FullName);
 
-        var list = await _client.GetFromJsonAsync<List<PersonDto>>("/people");
+        var list = await _client.GetFromJsonAsync<List<PersonDto>>("/api/v1/people");
         Assert.NotNull(list);
         Assert.Contains(list!, p => p.Id == created.Id && p.FullName == "Ada Lovelace");
+    }
+
+    [Theory]
+    [InlineData("/health/live")]
+    [InlineData("/health/ready")]
+    public async Task Health_endpoints_report_healthy(string path)
+    {
+        var response = await _client.GetAsync(path);
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var body = await response.Content.ReadAsStringAsync();
+        Assert.Equal("Healthy", body);
     }
 }

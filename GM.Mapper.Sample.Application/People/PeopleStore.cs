@@ -9,7 +9,7 @@ public interface IPeopleStore
     IReadOnlyList<Person> GetAll();
 }
 
-public class InMemoryPeopleStore : IPeopleStore
+public sealed class InMemoryPeopleStore : IPeopleStore
 {
     private readonly List<Person> _people = [];
     private readonly Lock _gate = new();

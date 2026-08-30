@@ -10,7 +10,7 @@ public interface IPeopleService
     PersonDto Create(CreatePersonRequest request);
 }
 
-public class PeopleService(IMapper mapper, IPeopleStore store) : IPeopleService
+public sealed class PeopleService(IMapper mapper, IPeopleStore store) : IPeopleService
 {
     public IReadOnlyList<PersonDto> GetAll() =>
         store.GetAll().Select(mapper.Map<PersonDto>).ToList();

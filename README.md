@@ -38,11 +38,11 @@ Open the Swagger UI, then:
 
 | Method | Route | Body | Result |
 | --- | --- | --- | --- |
-| `POST` | `/people` | `{ "firstName": "Ada", "lastName": "Lovelace", "dateOfBirth": "1990-01-01", "email": "ada@example.com" }` | `200` + the mapped `PersonDto` |
-| `GET` | `/people` | — | `200` + all people as DTOs (with `FullName` + `Age`) |
+| `POST` | `/api/v1/people` | `{ "firstName": "Ada", "lastName": "Lovelace", "dateOfBirth": "1990-01-01", "email": "ada@example.com" }` | `200` + the mapped `PersonDto` |
+| `GET` | `/api/v1/people` | — | `200` + all people as DTOs (with `FullName` + `Age`) |
 
 ```bash
-curl -k -X POST https://localhost:7000/people \
+curl -k -X POST https://localhost:7000/api/v1/people \
   -H "Content-Type: application/json" \
   -d '{ "firstName": "Ada", "lastName": "Lovelace", "dateOfBirth": "1990-01-01", "email": "ada@example.com" }'
 ```
