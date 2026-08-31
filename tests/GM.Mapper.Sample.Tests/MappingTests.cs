@@ -8,7 +8,7 @@ namespace GM.Mapper.Sample.Tests;
 
 public class MappingTests
 {
-    private static IMapper CreateMapper()
+    private static MapsterMapper.Mapper CreateMapper()
     {
         var config = new TypeAdapterConfig();
         config.Scan(typeof(MappingRegister).Assembly);

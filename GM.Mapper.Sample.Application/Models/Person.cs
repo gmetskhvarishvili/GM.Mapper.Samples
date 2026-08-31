@@ -1,7 +1,7 @@
 namespace GM.Mapper.Sample.Application.Models;
 
 /// <summary>A domain entity — the source type for mapping.</summary>
-public class Person
+public sealed class Person
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string FirstName { get; set; } = string.Empty;
