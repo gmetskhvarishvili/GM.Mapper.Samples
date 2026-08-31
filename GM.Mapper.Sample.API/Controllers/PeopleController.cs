@@ -10,9 +10,11 @@ public sealed class PeopleController(IPeopleService people) : ControllerBase
 {
     /// <summary>Returns all people as mapped DTOs (FullName + Age computed during mapping).</summary>
     [HttpGet]
+    [ProducesResponseType<IEnumerable<PersonDto>>(StatusCodes.Status200OK)]
     public IActionResult GetAll() => Ok(people.GetAll());
 
     /// <summary>Creates a person from the request (mapped to the domain entity) and returns its DTO.</summary>
     [HttpPost]
+    [ProducesResponseType<PersonDto>(StatusCodes.Status200OK)]
     public IActionResult Create([FromBody] CreatePersonRequest request) => Ok(people.Create(request));
 }

@@ -32,7 +32,7 @@ public class PeopleEndpointsTests(WebApplicationFactory<Program> factory)
 
         var list = await _client.GetFromJsonAsync<List<PersonDto>>("/api/v1/people");
         Assert.NotNull(list);
-        Assert.Contains(list!, p => p.Id == created.Id && p.FullName == "Ada Lovelace");
+        Assert.Contains(list, p => p.Id == created.Id && p.FullName == "Ada Lovelace");
     }
 
     [Theory]
